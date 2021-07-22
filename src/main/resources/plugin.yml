@@ -1,0 +1,10 @@
+name: ${project.name}
+main: ${main.class}
+version: ${project.version}
+api-version: 1.13
+author: ${author}
+load: POSTWORLD
+#
+# Commands are built on runtime, please do not modify.
+#
+commands: 

@@ -1,0 +1,16 @@
+# -------------------------------------------------------------------------------------------------
+# Global arena configuration file.
+#
+# Changes made here influence all games. To edit individual arena settings open the arena
+# in the arenas/ folder.
+# -------------------------------------------------------------------------------------------------
+
+#
+# The command names to execute the main arena command
+#
+Command_Aliases: [arena, a]
+#
+# The config version, do not touch
+#
+Version: 1
+Locale: "en"

@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<project name="Arena" default="Build">
+
+    <target name="Build">
+        <jar jarfile="/Users/kangarko/Test servers/1.16/plugins/${ant.project.name}.jar" basedir="./target/classes/" includes="**/*">
+            <fileset dir="../../Foundation/target/classes"/>
+        </jar>
+        <jar jarfile="/Users/kangarko/Test servers/1.8.8/plugins/${ant.project.name}.jar" basedir="./target/classes/" includes="**/*">
+            <fileset dir="../../Foundation/target/classes"/>
+        </jar>
+    </target>
+
+</project>

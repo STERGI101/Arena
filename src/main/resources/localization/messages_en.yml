@@ -1,0 +1,15 @@
+# -------------------------------------------------------------------------------------------------
+# Arena Plugin - messages_en
+#
+# Developed by STERGI101
+# This config includes the most important english messages.
+# -------------------------------------------------------------------------------------------------
+
+Commands:
+  Classes_Description: "Select or edit classes."
+
+
+Class_Selection:
+  InGame_ClassSelection_ERROR: "You may only select classes in the lobby."
+
+Version: 1

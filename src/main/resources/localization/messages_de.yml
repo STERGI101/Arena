@@ -1,0 +1,14 @@
+# -------------------------------------------------------------------------------------------------
+# Arena Plugin - messages_de
+#
+# Developed by STERGI101
+# Diese config enthält die wichtigsten deutschen Nachrichten.
+# -------------------------------------------------------------------------------------------------
+
+Commands:
+  Classes_Description: "Wähle Klassen aus oder bearbeite sie."
+
+Class_Selection:
+  InGame_ClassSelection_ERROR: "Du kannst nur Klassen in der Lobby auswählen."
+
+Version: 1
