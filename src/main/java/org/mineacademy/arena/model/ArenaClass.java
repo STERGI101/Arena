@@ -1,14 +1,9 @@
 package org.mineacademy.arena.model;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import javax.annotation.Nullable;
-
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -25,10 +20,13 @@ import org.mineacademy.fo.model.ConfigSerializable;
 import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.settings.YamlConfig;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import javax.annotation.Nullable;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Represents an arena class (a kit)
@@ -490,7 +488,7 @@ public final class ArenaClass extends YamlConfig {
 		/**
 		 * Set potion effects
 		 *
-		 * @param potionEffects the potionEffects to set
+		 * @param type the potionEffects to set
 		 */
 		public void setPotionEffect(final PotionEffectType type, final int level) {
 			final String name = type.getName();
