@@ -1,7 +1,5 @@
 package org.mineacademy.arena.tool;
 
-import java.util.List;
-
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -11,6 +9,8 @@ import org.mineacademy.fo.Common;
 import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.visual.BlockVisualizer;
 import org.mineacademy.fo.visual.VisualizedRegion;
+
+import java.util.List;
 
 /**
  * A class that can visualize selection of blocks in the arena
@@ -22,8 +22,8 @@ public abstract class VisualTool<T extends Arena> extends ArenaTool<T> {
 	/**
 	 * Create a new visual tool
 	 *
-	 * @param name
-	 * @param mask
+	 *
+	 *
 	 */
 	protected VisualTool() {
 		this(null);
