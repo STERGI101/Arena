@@ -61,8 +61,6 @@ public final class ArenaPlugin extends SimplePlugin {
 		SimpleCommand.USE_MESSENGER = true;
 
 		Common.runLater(ArenaManager::loadArenas); // Uncomment this line if your arena world is loaded by a third party plugin such as Multiverse
-
-		registerEvents(new LocaleListener());
 	}
 
 	/**
