@@ -1,7 +1,7 @@
 package org.mineacademy.arena.command;
 
 import org.bukkit.entity.Player;
-import org.mineacademy.arena.localization.Localization;
+import org.mineacademy.arena.settings.Localization;
 import org.mineacademy.arena.menu.ClassSelectionMenu;
 import org.mineacademy.arena.model.ArenaJoinMode;
 import org.mineacademy.arena.model.ArenaPlayer;

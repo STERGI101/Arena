@@ -2,8 +2,7 @@ package org.mineacademy.arena;
 
 import lombok.Getter;
 import org.mineacademy.arena.command.ArenaCommandGroup;
-import org.mineacademy.arena.localization.LocaleListener;
-import org.mineacademy.arena.localization.Localization;
+import org.mineacademy.arena.settings.Localization;
 import org.mineacademy.arena.model.*;
 import org.mineacademy.arena.model.dm.DeathmatchArena;
 import org.mineacademy.arena.model.eggwars.EggWarsArena;

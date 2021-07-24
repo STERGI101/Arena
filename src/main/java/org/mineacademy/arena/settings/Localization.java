@@ -1,4 +1,4 @@
-package org.mineacademy.arena.localization;
+package org.mineacademy.arena.settings;
 
 import org.mineacademy.fo.settings.SimpleLocalization;
 
