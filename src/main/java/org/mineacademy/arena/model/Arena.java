@@ -1,10 +1,7 @@
 package org.mineacademy.arena.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Consumer;
-
+import lombok.AccessLevel;
+import lombok.Getter;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
@@ -29,13 +26,7 @@ import org.mineacademy.arena.settings.Settings;
 import org.mineacademy.arena.tool.ArenaTool;
 import org.mineacademy.arena.tool.ToolSpectatePlayers;
 import org.mineacademy.arena.util.Constants;
-import org.mineacademy.fo.Common;
-import org.mineacademy.fo.MathUtil;
-import org.mineacademy.fo.Messenger;
-import org.mineacademy.fo.PlayerUtil;
-import org.mineacademy.fo.RandomUtil;
-import org.mineacademy.fo.ReflectionUtil;
-import org.mineacademy.fo.Valid;
+import org.mineacademy.fo.*;
 import org.mineacademy.fo.collection.StrictMap;
 import org.mineacademy.fo.collection.StrictSet;
 import org.mineacademy.fo.menu.tool.Tool;
@@ -48,8 +39,10 @@ import org.mineacademy.fo.remain.CompMaterial;
 import org.mineacademy.fo.remain.CompMetadata;
 import org.mineacademy.fo.remain.Remain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
 
 public abstract class Arena {
 
