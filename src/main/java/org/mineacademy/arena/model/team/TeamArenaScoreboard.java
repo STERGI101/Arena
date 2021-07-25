@@ -20,9 +20,7 @@ public class TeamArenaScoreboard extends ArenaScoreboard {
 		super(arena);
 	}
 
-	/**
-	 * @see org.mineacademy.arena.model.ArenaScoreboard#replaceVariablesLate(java.lang.String)
-	 */
+
 	@Override
 	protected String replaceVariablesLate(final Player player, String message) {
 		final TeamArenaSettings settings = getArena().getSettings();

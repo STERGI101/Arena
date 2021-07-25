@@ -1,7 +1,6 @@
 package org.mineacademy.arena.model.team;
 
-import java.util.List;
-
+import lombok.Getter;
 import org.bukkit.Location;
 import org.mineacademy.arena.model.ArenaSettings;
 import org.mineacademy.arena.model.ArenaTeam;
@@ -9,7 +8,7 @@ import org.mineacademy.arena.model.ArenaTeamPoints;
 import org.mineacademy.fo.Valid;
 import org.mineacademy.fo.collection.SerializedMap;
 
-import lombok.Getter;
+import java.util.List;
 
 /**
  * Represents settings used in monster arenas
@@ -31,7 +30,7 @@ public class TeamArenaSettings extends ArenaSettings {
 	/**
 	 * Create new arena settings
 	 *
-	 * @param arenaName
+	 * @param arena
 	 */
 	public TeamArenaSettings(final TeamArena arena) {
 		super(arena);
