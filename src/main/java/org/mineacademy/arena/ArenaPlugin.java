@@ -2,17 +2,17 @@ package org.mineacademy.arena;
 
 import lombok.Getter;
 import org.mineacademy.arena.command.ArenaCommandGroup;
-import org.mineacademy.arena.settings.Localization;
 import org.mineacademy.arena.model.*;
 import org.mineacademy.arena.model.dm.DeathmatchArena;
 import org.mineacademy.arena.model.eggwars.EggWarsArena;
 import org.mineacademy.arena.model.monster.MobArena;
 import org.mineacademy.arena.model.team.ctf.CaptureTheFlagArena;
 import org.mineacademy.arena.model.team.tdm.TeamDeathmatchArena;
+import org.mineacademy.arena.settings.Localization;
 import org.mineacademy.arena.settings.Settings;
 import org.mineacademy.arena.task.EscapeTask;
 import org.mineacademy.fo.Common;
-import org.mineacademy.fo.command.SimpleCommand;
+import org.mineacademy.fo.Messenger;
 import org.mineacademy.fo.command.SimpleCommandGroup;
 import org.mineacademy.fo.plugin.SimplePlugin;
 import org.mineacademy.fo.settings.YamlStaticConfig;
@@ -58,7 +58,7 @@ public final class ArenaPlugin extends SimplePlugin {
 		Common.ADD_TELL_PREFIX = true;
 
 		// Use themed messages in commands
-		SimpleCommand.USE_MESSENGER = true;
+		Messenger.ENABLED = true;
 
 		Common.runLater(ArenaManager::loadArenas); // Uncomment this line if your arena world is loaded by a third party plugin such as Multiverse
 	}
