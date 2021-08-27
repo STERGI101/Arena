@@ -30,7 +30,7 @@ public class ClassesCommand extends ArenaSubCommand {
 			ClassSelectionMenu.openSelectMenu(getPlayer(), cache.getArena());
 
 		} else {
-			checkBoolean(player.isOp(), "You don't have permission to edit classes.");
+			checkBoolean(player.isOp(), Localization.Commands.CLASSES_EDIT_PERM_ERROR);
 
 			ClassSelectionMenu.openEditMenu(null, getPlayer());
 		}

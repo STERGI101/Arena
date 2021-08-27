@@ -1,12 +1,12 @@
 package org.mineacademy.arena.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.mineacademy.arena.model.Arena;
 import org.mineacademy.arena.model.ArenaJoinMode;
 import org.mineacademy.arena.model.ArenaManager;
-import org.mineacademy.fo.Common;
+import org.mineacademy.arena.settings.Localization;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The command to create new arenas in game
@@ -14,7 +14,7 @@ import org.mineacademy.fo.Common;
 public class NewCommand extends ArenaSubCommand {
 
 	protected NewCommand() {
-		super("new|n", 2, "<type> <arena>", "Create a new arena.");
+		super("new|n", 2, "<type> <arena>", Localization.Commands.NEW_DESCRIPTION);
 	}
 
 	@Override
@@ -23,7 +23,11 @@ public class NewCommand extends ArenaSubCommand {
 		checkNotInArena();
 
 		final String type = args[0];
-		checkBoolean(ArenaManager.hasArenaType(type), Common.format("Invalid arena type. Available: %s", ArenaManager.getArenaTypes()));
+		checkBoolean(ArenaManager.hasArenaType(type),
+				Localization.Commands.NEW_ERROR
+				.find("Arenatypes")
+				.replace(ArenaManager.getArenaTypes())
+				.getReplacedMessageJoined());
 
 		final String name = args[1];
 		checkArenaNotLoaded(name);
@@ -33,7 +37,11 @@ public class NewCommand extends ArenaSubCommand {
 		// Automatically put player into edit mode after he creates a new arena
 		arena.joinPlayer(getPlayer(), ArenaJoinMode.EDITING);
 
-		tellSuccess("Created " + type + " arena " + arena.getName() + ". Use /{label} tools to edit it now.");
+		tellSuccess(
+				Localization.Commands.NEW_SUCCESS
+				.find("Arenatype", "Arenaname")
+				.replace(type, arena.getName())
+				.getReplacedMessageJoined());
 	}
 
 	@Override

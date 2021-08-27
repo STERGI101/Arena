@@ -37,200 +37,139 @@
     <name>Arena</name>
     <version>1.0.0</version>
 
-    <!-- ############################################################################### -->
-
-    <!--
-        Configure some of the Maven settings. We also define
-        our new variables here such as the main class or Java version
-        for our plugin.
-
-        You can use those variables in your src/resources folder. See
-        plugin.yml folder there for example usage.
-    -->
     <properties>
 
-        <!-- The full path to your plugin's main class, so that Spigot can find and load it -->
+        <!-- Change to your name or the main collaborator. -->
+        <author>STERGI101</author>
+
+        <!-- Change to the full path where your main class extending SimplePlugin is. -->
         <main.class>org.mineacademy.arena.ArenaPlugin</main.class>
 
-        <!-- The Java version your plugin uses, see bstats.org for what most servers have and use that -->
+        <!-- Change to the Java version used when compiling.
+
+             IMPORTANT: For Java 8, version is "1.8", for Java 11+ it is only "11" or "16".
+
+             If you use 1.8 then your plugin will work on newer versions,
+             but if you use "11" or "16" then it will not load on servers
+             with previous Java version. We recommend you stick with 1.8.
+
+             IF YOU WANT TO CODE WITH JAVA 16 THERE ARE CHANGES YOU MUST MAKE TO THIS
+             FILE, SEE <pluginRepositories> AND VERSION IN THE maven-shade-plugin BELOW.
+             -->
         <java.version>1.8</java.version>
 
-        <!-- How letters in your code should be saved on your disk, leave to UTF-8 to support all languages -->
+        <!-- Change to the latest one from https://github.com/kangarko/Foundation/releases
+             or change to "LATEST" if you downloaded Foundation to your disk. -->
+        <foundation.version>5.10.14</foundation.version>
+
+        <!-- Leave on "com.github.kangarko" if you use Foundation from GitHub like most people,
+             or change to "org.mineacademy" if you downloaded our library to your disk. -->
+        <foundation.path>com.github.kangarko</foundation.path>
+
+        <!-- DO NOT EDIT. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!--
-        Configure where should Maven look for other libraries and plugins we
-        want to use in our plugin. Those libraries and plugins can you then
-        reference below in the dependencies section.
-
-        Each repository has two parts - the id and url. The id does not
-        really matter, however the URL must contain a valid Maven repository
-        where the dependency is "installed" (that's why we call the goal "install"
-        because we want to install our plugin on our PC as well so that we can
-        use it in our other plugins together without linking it as a dependency)
-
-        By default we use the Spigot repository for Spigot and the central Maven
-        repo for many other plugins.
-    -->
     <repositories>
-        <repository>
-            <id>spigotmc-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/groups/public/</url>
-        </repository>
+        <!-- DO NOT EDIT, used to pull Foundation from the JitPack site. -->
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-        <repository>
-            <id>sonatype</id>
-            <url>https://oss.sonatype.org/content/groups/public/</url>
-        </repository>
     </repositories>
 
-    <!--
-        Configure what other libraries or plugins are we going to use in this plugin.
+    <!-- UNCOMMENT ONLY IF YOUR java.version IS SET TO JAVA 16 OR HIGHER. -->
+    <!--<pluginRepositories>
+        <pluginRepository>
+            <id>maven-snapshots</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>-->
 
-        As a starting point, we are importing the Spigot API and Foundation.
-    -->
     <dependencies>
-
-        <!--
-            Import the Spigot API since it's necessary for our plugin
-
-            Make sure you change the version to the latest version you want to use for your plugin.
-        -->
+        <!-- Use our Foundation library -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
-
-            <!-- Change this to the latest version to stay up to date -->
-            <version>1.15.2-R0.1-SNAPSHOT</version>
-
-            <!--
-                The scope indicates if this library should be packaged together with our plugin
-                when we want to publish it.
-
-                Set this to "compile" if you want all classes from this library to be copied
-                to your plugin's jar, otherwise set this to "provided".
-            -->
-            <scope>provided</scope>
-        </dependency>
-
-        <!--
-            Import the Foundation library to kickstart our plugin development
-        -->
-        <dependency>
-            <groupId>com.github.kangarko</groupId>
+            <groupId>${foundation.path}</groupId>
             <artifactId>Foundation</artifactId>
-            <!--
-                Make sure to stay up to date and check for new versions from
-                https://github.com/kangarko/Foundation/releases
-            -->
-            <version>5.9.9</version>
-            <!-- Include Foundation and its dependencies. There are exceptions, see shade plugin below -->
-            <scope>compile</scope>
+            <version>${foundation.version}</version>
         </dependency>
+
+        <!-- (Optional) Access the server jar for NMS (groupId, artifactId and version do not matter and you
+             can only use it for your own organization purposes, but keep version in artifactId not in version
+             if using multiple NMS imports otherwise Maven will fail to import them correctly).
+
+             Foundation by default uses the latest Spigot API version. If you want to develop for another
+             version, move this dependency above Foundation here in this file so that your IDE.
+
+             NB: Edit the <systemPath> to point out to your patched server file on your disk. -->
+        <!--<dependency>
+            <groupId>paper-server</groupId>
+            <artifactId>Paper-1.8.8</artifactId>
+            <version>1</version>
+            <scope>system</scope>
+            <systemPath>/Users/kangarko/Test Servers/1.8.8/cache/patched.jar</systemPath>
+        </dependency>-->
     </dependencies>
 
-    <!--
-        Configure what happens when we are building this project (Maven compiles our code into bytecode
-        for us automatically).
-    -->
+    <!-- DO NOT EDIT unless instructed to do so or you know what you're doing. -->
     <build>
-
-        <!--
-            When we are building your plugins, what plugins should we use during this process?
-
-            The plugins here extend the functionality of Maven, just like your plugin enhances Minecraft
-            These are not Minecraft plugins, but only Maven plugins!
-        -->
+        <finalName>${project.name}-${project.version}</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
 
-            <!--
-                The first and the most essential plugin is the compiler, that translates your
-                human readable code into bytecode.
-            -->
+                <!-- Change version to the latest one from
+                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+                <version>3.2.0</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!--
-                    You want to check and update the latest version periodically from
-                    https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin
-                -->
+
+                <!-- Change version to the latest one from
+                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
                 <version>3.8.1</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
-            <!--
-                The second plugin is the shade plugin, packaging every library with
-                the "compile" scope (see dependencies)
-            -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <!--
-                    You want to check and update the latest version periodically from
-                    https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin
-                -->
-                <version>3.2.1</version>
+
+                <!-- Change version to the latest one from
+                     https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin
+
+                     IF YOU USE JAVA 16 THEN PLACE 3.3.0-SNAPSHOT TO THE VERSION AND MAKE SURE TO
+                     UNCOMMENT <pluginRepositories> above.
+                     -->
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                        <!--
-                        	By default we configure the Foundation to include itself and all classes when
-                        	we set the scope to compile (see above).
-
-                        	There are many libraries from Foundation we will not need to use, and here
-                        	can you specify which ones to exclude. Please leave the default ones as they are.
-                        -->
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <finalName>${project.name}-${project.version}</finalName>
-                            <artifactSet>
-                                <includes>
-                                    <include>org.mineacademy:Game*</include>
-                                    <include>org.mineacademy:Foundation*</include>
-                                    <include>com.github.kangarko:Foundation*</include>
-                                    <include>com.github.kangarko:Foundation*</include>
-                                </includes>
-                                <excludes>
-                                    <exclude>org.mineacademy:GameAPI*</exclude>
-                                    <exclude>com.github.kangarko:GameAPI*</exclude>
-                                </excludes>
-                            </artifactSet>
-                            <relocations>
-                                <relocation>
-                                    <pattern>org.mineacademy</pattern>
-                                    <shadedPattern>${project.groupId}.${project.artifactId}.lib</shadedPattern>
-                                    <excludes>
-                                        <exclude>org.mineacademy.${project.artifactId}.*</exclude>
-                                        <exclude>org.mineacademy.gameapi.*</exclude>
-                                        <exclude>org.mineacademy.boss.*</exclude>
-                                        <exclude>org.mineacademy.worldeditbridge.*</exclude>
-                                    </excludes>
-                                </relocation>
-                            </relocations>
-                        </configuration>
                     </execution>
                 </executions>
+                <configuration>
+                    <createDependencyReducedPom>false</createDependencyReducedPom>
+                    <artifactSet>
+                        <includes>
+                            <include>${foundation.path}:Foundation*</include>
+                        </includes>
+                    </artifactSet>
+                    <relocations>
+                        <relocation>
+                            <pattern>org.mineacademy.fo</pattern>
+                            <shadedPattern>${project.groupId}.${project.artifactId}.lib</shadedPattern>
+                        </relocation>
+                    </relocations>
+                </configuration>
             </plugin>
         </plugins>
-
-        <!--
-            During the build, we are going to scan all files in src/main/resources
-            folder such as plugin.yml and your settings files and replace all variables
-            such as ${main.class} with their proper values.
-
-            You can use native variables such as ${project.X} or the ones you defined above
-            in the properties section.
-        -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -238,5 +177,4 @@
             </resource>
         </resources>
     </build>
-
 </project>

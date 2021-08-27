@@ -5,6 +5,7 @@ import org.mineacademy.arena.model.ArenaJoinMode;
 import org.mineacademy.arena.model.ArenaLeaveReason;
 import org.mineacademy.arena.model.ArenaManager;
 import org.mineacademy.arena.model.ArenaPlayer;
+import org.mineacademy.arena.settings.Localization;
 import org.mineacademy.fo.Common;
 
 /**
@@ -13,7 +14,7 @@ import org.mineacademy.fo.Common;
 public class EditCommand extends ArenaSubCommand {
 
 	protected EditCommand() {
-		super("edit|e", "Edit an existing arena.");
+		super("edit|e", Localization.Commands.EDIT_DESCRIPTION);
 
 		setUsage("[arena]");
 	}
@@ -33,7 +34,7 @@ public class EditCommand extends ArenaSubCommand {
 			else
 				arena = ArenaManager.findArena(getPlayer().getLocation());
 
-			checkNotNull(arena, "Please specify what arena to edit.");
+			checkNotNull(arena, Localization.Commands.EDIT_ARENA_NOT_FOUND);
 		} else
 			arena = findArena(args[0]);
 

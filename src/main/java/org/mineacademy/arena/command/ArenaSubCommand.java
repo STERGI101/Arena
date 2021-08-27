@@ -1,12 +1,13 @@
 package org.mineacademy.arena.command;
 
-import java.util.List;
-
 import org.mineacademy.arena.model.Arena;
 import org.mineacademy.arena.model.ArenaManager;
 import org.mineacademy.arena.model.ArenaPlayer;
+import org.mineacademy.arena.settings.Localization;
 import org.mineacademy.fo.Common;
 import org.mineacademy.fo.command.SimpleSubCommand;
+
+import java.util.List;
 
 /**
  * A helper class for /arena sub commands
@@ -48,7 +49,10 @@ public abstract class ArenaSubCommand extends SimpleSubCommand {
 	 */
 	protected final Arena findArena(final String name) {
 		final Arena arena = ArenaManager.findArena(name);
-		checkNotNull(arena, Common.format("Arena %s does not exist. Available: %s", name, ArenaManager.getArenaNames()));
+		checkNotNull(arena, Localization.Commands.FIND_ARENA_ERROR
+				.find("input", "Arenanames")
+				.replace(name, ArenaManager.getArenaNames())
+				.getReplacedMessageJoined());
 
 		return arena;
 	}
@@ -60,7 +64,7 @@ public abstract class ArenaSubCommand extends SimpleSubCommand {
 		checkConsole();
 
 		final ArenaPlayer cache = ArenaPlayer.getCache(getPlayer());
-		checkBoolean(cache.hasArena(), "You are not joined in any arena.");
+		checkBoolean(cache.hasArena(), Localization.Commands.PLAYER_NOT_IN_ARENA);
 	}
 
 	/**
@@ -71,8 +75,12 @@ public abstract class ArenaSubCommand extends SimpleSubCommand {
 
 		final ArenaPlayer cache = ArenaPlayer.getCache(getPlayer());
 
-		if (cache.hasArena())
-			returnTell("You cannot perform this while " + cache.getMode().getLocalized() + " arena " + cache.getArena().getName() + ".");
+		if (cache.hasArena()) {
+			returnTell(Localization.Commands.PLAYER_IN_ARENAMODE_WHILE_EDITING
+					.find("Arenamode", "Arenaname")
+					.replace(cache.getMode().getLocalized(), cache.getArena().getName())
+					.getReplacedMessage());
+		}
 	}
 
 	/**

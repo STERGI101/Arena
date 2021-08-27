@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.mineacademy.arena.model.Arena;
 import org.mineacademy.arena.model.ArenaJoinMode;
 import org.mineacademy.arena.model.ArenaManager;
+import org.mineacademy.arena.settings.Localization;
 import org.mineacademy.fo.remain.Remain;
 
 /**
@@ -13,7 +14,7 @@ import org.mineacademy.fo.remain.Remain;
 public class JoinCommand extends ArenaSubCommand {
 
 	protected JoinCommand() {
-		super("join|j", "Go play an arena.");
+		super("join|j", Localization.Commands.JOIN_DESCRIPTION);
 
 		setUsage("[arena]");
 	}
@@ -28,7 +29,7 @@ public class JoinCommand extends ArenaSubCommand {
 		if (args.length == 0) {
 			arena = ArenaManager.findArena(getPlayer().getLocation());
 
-			checkNotNull(arena, "Could not find an arena to join, please specify its name.");
+			checkNotNull(arena, Localization.Commands.JOIN_ARENA_NOT_FOUND);
 		} else {
 			arena = findArena(args[0]);
 

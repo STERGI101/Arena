@@ -7,9 +7,27 @@
 
 Commands:
   Classes_Description: "Select or edit classes."
-
+  Classes_Edit_Perm_Error: "You don't have permission to edit classes."
+  Edit_Description: "Edit an existing arena."
+  Edit_Arena_Not_Found: "Please specify what arena to edit."
+  Join_Description: "Go play an arena."
+  Join_Arena_Not_Found: "Could not find an arena to join, please specify its name."
+  Leave_Description: "Leave an arena."
+  List_Description: "List available arenas."
+  List_Error: "Available arenas: {Arenanames}"
+  New_Description: "Create a new arena."
+  New_Error: "Invalid arena type. Available: {Arenatypes}"
+  New_Success: "Created {Arenatype} arena {Arenaname}. Use /{label} tools to edit it now."
+  Remove_Description: "Remove an new arena."
+  Remove_Success: "Arena {Arenaname} has been removed successfully."
+  Find_Arena_Error: "Arena {input} does not exist. Available: {Arenanames}"
+  Player_Not_In_Arena: "You are not joined in any arena."
+  Player_In_ArenaMode_While_Editing: "You cannot perform this while {Arenamode} arena {Arenaname}."
 
 Class_Selection:
   InGame_ClassSelection_ERROR: "You may only select classes in the lobby."
+
+Arenas:
+
 
 Version: 1

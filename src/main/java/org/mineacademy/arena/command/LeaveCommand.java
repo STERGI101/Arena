@@ -1,11 +1,12 @@
 package org.mineacademy.arena.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.mineacademy.arena.model.Arena;
 import org.mineacademy.arena.model.ArenaLeaveReason;
 import org.mineacademy.arena.model.ArenaManager;
+import org.mineacademy.arena.settings.Localization;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The command to leave arenas when playing
@@ -13,7 +14,7 @@ import org.mineacademy.arena.model.ArenaManager;
 public class LeaveCommand extends ArenaSubCommand {
 
 	protected LeaveCommand() {
-		super("leave|l", "Leave an arena.");
+		super("leave|l", Localization.Commands.LEAVE_DESCRIPTION);
 	}
 
 	@Override

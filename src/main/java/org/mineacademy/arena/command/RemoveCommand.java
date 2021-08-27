@@ -2,6 +2,7 @@ package org.mineacademy.arena.command;
 
 import org.mineacademy.arena.model.Arena;
 import org.mineacademy.arena.model.ArenaManager;
+import org.mineacademy.arena.settings.Localization;
 
 /*
  * A command to permanently remove arenas
@@ -9,7 +10,7 @@ import org.mineacademy.arena.model.ArenaManager;
 public class RemoveCommand extends ArenaSubCommand {
 
 	protected RemoveCommand() {
-		super("remove|rm", 1, "<arena>", "Remove an new arena.");
+		super("remove|rm", 1, "<arena>", Localization.Commands.REMOVE_DESCRIPTION);
 	}
 
 	@Override
@@ -18,6 +19,10 @@ public class RemoveCommand extends ArenaSubCommand {
 		final Arena arena = findArena(name);
 
 		ArenaManager.removeArena(arena);
-		tellSuccess("Arena " + name + " has been removed successfully.");
+		tellSuccess(
+				Localization.Commands.REMOVE_SUCCESS
+				.find("Arenaname")
+				.replace(name)
+				.getReplacedMessageJoined());
 	}
 }
