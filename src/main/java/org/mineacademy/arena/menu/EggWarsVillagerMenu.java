@@ -1,7 +1,7 @@
 package org.mineacademy.arena.menu;
 
-import javax.annotation.Nullable;
-
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.conversations.ConversationContext;
 import org.bukkit.conversations.Prompt;
 import org.bukkit.entity.Player;
@@ -22,8 +22,7 @@ import org.mineacademy.fo.menu.model.ItemCreator;
 import org.mineacademy.fo.menu.model.MenuClickLocation;
 import org.mineacademy.fo.remain.CompMaterial;
 
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import javax.annotation.Nullable;
 
 /**
  * Enable to purchase items from the villager when playing egg wars
@@ -210,7 +209,7 @@ public class EggWarsVillagerMenu extends Menu {
 	// ------–------–------–------–------–------–------–------–------–------–------–------–
 
 	/**
-	 * How this menu is displayd
+	 * How this menu is displayed
 	 */
 	@RequiredArgsConstructor
 	private enum ViewMode {

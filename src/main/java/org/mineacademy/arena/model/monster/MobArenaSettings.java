@@ -1,7 +1,9 @@
 package org.mineacademy.arena.model.monster;
 
-import java.util.List;
-
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.mineacademy.arena.model.ArenaSettings;
@@ -11,10 +13,7 @@ import org.mineacademy.fo.collection.SerializedMap;
 import org.mineacademy.fo.model.ConfigSerializable;
 import org.mineacademy.fo.model.SimpleTime;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 /**
  * Represents settings used in monster arenas
@@ -40,7 +39,7 @@ public class MobArenaSettings extends ArenaSettings {
 	/**
 	 * Create new arena settings
 	 *
-	 * @param arenaName
+	 * @param arena
 	 */
 	public MobArenaSettings(final MobArena arena) {
 		super(arena);
